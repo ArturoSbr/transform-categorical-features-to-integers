@@ -1,4 +1,4 @@
-import numpy as np
+from numpy import log
 import pandas as pd
 
 def cat_to_int(feature, target, return_dict=True):
@@ -36,7 +36,7 @@ def cat_to_int(feature, target, return_dict=True):
     t = t.groupby('level')['y'].sum().reset_index(name='events')
     t['non_events'] = ((ev + nv) - t['events']).div(nv)
     t['events'] = t['events'].div(ev)
-    t['woe'] = np.log(t['non_events'].replace(0, 0.01) / t['events'].replace(0, 0.01))
+    t['woe'] = log(t['non_events'].replace(0, 0.01) / t['events'].replace(0, 0.01))
     t = t.sort_values('woe', ascending=True)
     t.reset_index(drop=True, inplace=True)
     if return_dict:
