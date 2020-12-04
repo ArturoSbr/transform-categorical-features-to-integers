@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 
 def cat_to_int(feature, target, return_dict=True):
