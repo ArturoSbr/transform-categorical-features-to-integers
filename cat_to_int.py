@@ -1,3 +1,5 @@
+import pandas as pd
+
 def cat_to_int(feature, target, return_dict=True):
     '''
     Convert a categorical feature to integer values according to its relationship with a binary target.
